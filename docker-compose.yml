@@ -1,0 +1,16 @@
+services:
+  back:
+    build: ./back
+    container_name: midas-back
+    ports:
+      - "8000:8000"
+    restart: always
+
+  front:
+    build: ./front
+    container_name: midas-front
+    ports:
+      - "8080:8501"
+    depends_on:
+      - back
+    restart: always

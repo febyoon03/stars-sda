@@ -1,0 +1,22 @@
+[
+  {"name":"ISS","norad":"25544","orbit":"LEO","mission":"Scientific","alt":408,"inc":51.6,"ecc":0.001,"mm":15.49,"mmc":"Medium","tle1":"","tle2":""},
+  {"name":"NOAA-20","norad":"43013","orbit":"LEO","mission":"Earth Observation","alt":824,"inc":98.7,"ecc":0.001,"mm":14.19,"mmc":"Low","tle1":"","tle2":""},
+  {"name":"LANDSAT-8","norad":"39084","orbit":"LEO","mission":"Earth Observation","alt":705,"inc":98.2,"ecc":0.001,"mm":14.57,"mmc":"Low","tle1":"","tle2":""},
+  {"name":"SENTINEL-2A","norad":"40697","orbit":"LEO","mission":"Earth Observation","alt":786,"inc":98.6,"ecc":0.001,"mm":14.30,"mmc":"Low","tle1":"","tle2":""},
+  {"name":"TERRA","norad":"25994","orbit":"LEO","mission":"Earth Observation","alt":705,"inc":98.2,"ecc":0.001,"mm":14.57,"mmc":"Low","tle1":"","tle2":""},
+  {"name":"STARLINK-1","norad":"44713","orbit":"LEO","mission":"Communication","alt":550,"inc":53.0,"ecc":0.001,"mm":15.05,"mmc":"High","tle1":"","tle2":""},
+  {"name":"IRIDIUM-100","norad":"41917","orbit":"LEO","mission":"Communication","alt":780,"inc":86.4,"ecc":0.001,"mm":14.34,"mmc":"Low","tle1":"","tle2":""},
+  {"name":"SWARM-A","norad":"39451","orbit":"LEO","mission":"Scientific","alt":462,"inc":87.4,"ecc":0.001,"mm":15.27,"mmc":"Medium","tle1":"","tle2":""},
+  {"name":"CRYOSAT-2","norad":"36508","orbit":"LEO","mission":"Scientific","alt":717,"inc":92.0,"ecc":0.001,"mm":14.52,"mmc":"Low","tle1":"","tle2":""},
+  {"name":"GPS IIF-1","norad":"37753","orbit":"MEO","mission":"Navigation","alt":20200,"inc":55.0,"ecc":0.01,"mm":2.006,"mmc":"Low","tle1":"","tle2":""},
+  {"name":"GALILEO-1","norad":"37846","orbit":"MEO","mission":"Navigation","alt":23222,"inc":56.0,"ecc":0.001,"mm":1.704,"mmc":"Low","tle1":"","tle2":""},
+  {"name":"GLONASS-M","norad":"32276","orbit":"MEO","mission":"Navigation","alt":19100,"inc":64.8,"ecc":0.001,"mm":2.131,"mmc":"Low","tle1":"","tle2":""},
+  {"name":"INTELSAT-19","norad":"38566","orbit":"GEO","mission":"Communication","alt":35786,"inc":0.05,"ecc":0.0003,"mm":1.002,"mmc":"Low","tle1":"","tle2":""},
+  {"name":"GOES-16","norad":"41866","orbit":"GEO","mission":"Earth Observation","alt":35786,"inc":0.1,"ecc":0.0002,"mm":1.002,"mmc":"Low","tle1":"","tle2":""},
+  {"name":"ASTRA-1N","norad":"37775","orbit":"GEO","mission":"Communication","alt":35786,"inc":0.04,"ecc":0.0001,"mm":1.002,"mmc":"Low","tle1":"","tle2":""},
+  {"name":"BEIDOU-G1","norad":"36287","orbit":"GEO","mission":"Navigation","alt":35786,"inc":1.5,"ecc":0.001,"mm":1.002,"mmc":"Low","tle1":"","tle2":""},
+  {"name":"MOLNIYA-3","norad":"22839","orbit":"HEO","mission":"Communication","alt":39750,"inc":63.4,"ecc":0.74,"mm":2.006,"mmc":"Medium","tle1":"","tle2":""},
+  {"name":"TUNDRA-1","norad":"41032","orbit":"HEO","mission":"Communication","alt":35786,"inc":63.4,"ecc":0.27,"mm":1.003,"mmc":"Low","tle1":"","tle2":""},
+  {"name":"SBIRS-GEO-1","norad":"37267","orbit":"GEO","mission":"Scientific","alt":35786,"inc":5.2,"ecc":0.001,"mm":1.002,"mmc":"Low","tle1":"","tle2":""},
+  {"name":"UNKNOWN-OBJ","norad":"99001","orbit":"LEO","mission":"Unknown Object","alt":372,"inc":72.0,"ecc":0.35,"mm":15.7,"mmc":"High","tle1":"","tle2":""}
+]
