@@ -65,80 +65,80 @@ def calculate_risk(alt, ecc, mmc, orbit, mission, inc):
 
     if ecc > 0.3:
         score += 35
-        reasons.append("Very high eccentricity — possible uncontrolled orbit or HEO profile.")
+        reasons.append("매우 높은 이심률 — 비제어 궤도 또는 HEO 프로파일 가능성.")
     elif ecc > 0.1:
         score += 15
-        reasons.append("Elevated eccentricity detected — monitor for orbital instability.")
+        reasons.append("이심률 상승 감지 — 궤도 불안정성 모니터링 필요.")
 
     if mmc == "High":
         score += 40
-        reasons.append("Significant mean motion change — possible maneuver or atmospheric drag event.")
+        reasons.append("평균 운동 변화량 높음 — 기동 또는 대기권 항력 이벤트 가능성.")
     elif mmc == "Medium":
         score += 20
-        reasons.append("Moderate mean motion variation — compare with next TLE epoch.")
+        reasons.append("중간 수준의 평균 운동 변화 — 다음 TLE 에포크와 비교 필요.")
 
     if orbit == "LEO" and alt < 400:
         score += 20
-        reasons.append("Critically low LEO altitude — reentry risk within months due to atmospheric drag.")
+        reasons.append("LEO 임계 저고도 — 대기권 항력으로 인한 수개월 내 재진입 위험.")
 
     if mission == "Unknown Object":
         score += 20
-        reasons.append("Unidentified object — no operator data available, high uncertainty.")
+        reasons.append("미확인 물체 — 운용 데이터 없음, 불확실성 높음.")
 
     if inc > 85 and inc < 95:
         score += 5
-        reasons.append("Near-polar orbit — increased conjunction risk with other polar satellites.")
+        reasons.append("근극궤도 — 다른 극궤도 위성과의 충돌 위험 증가.")
 
     score = min(score, 100)
 
     if score >= 70:
         risk_level = "High"
         strategy = [
-            "Immediate optical/RF cross-validation recommended.",
-            "Priority tracking flag — escalate to SDA operator.",
-            "Conjunction screening required — compute TCA with nearby objects.",
-            "Propagate with latest TLE and compare against predicted ephemeris.",
-            "Reentry risk monitoring recommended." if alt < 400 else "Check for active maneuver — compare BSTAR drag term.",
-            "High eccentricity — possible uncontrolled tumbling, request optical observation." if ecc > 0.3 else "Monitor next 3 TLE updates for persistent anomaly.",
+            "즉각적인 광학/RF 교차 검증 권장.",
+            "우선 추적 플래그 설정 — SDA 운용자에게 에스컬레이션.",
+            "충돌 스크리닝 필요 — 인접 물체와의 TCA 계산.",
+            "최신 TLE로 전파 후 예측 위성력과 비교.",
+            "재진입 위험 모니터링 권장." if alt < 400 else "활성 기동 확인 — BSTAR 항력 계수 비교.",
+            "높은 이심률 — 비제어 텀블링 가능성, 광학 관측 요청." if ecc > 0.3 else "다음 3회 TLE 업데이트 모니터링.",
         ]
         validation_plan = [
-            "Cross-check with Space-Track.org catalog for latest TLE epoch",
-            "Run SGP4 propagation and compare predicted vs observed state vector",
-            "Request optical observation during next pass window",
-            "Perform RF signal monitoring to detect active maneuver",
-            "Check conjunction data messages (CDMs) for close approach events",
-            "Notify SDA operator if anomaly persists beyond 2 TLE updates"
+            "Space-Track.org 카탈로그에서 최신 TLE 에포크 교차 확인",
+            "SGP4 전파 실행 후 예측 대 관측 상태벡터 비교",
+            "다음 패스 윈도우에서 광학 관측 요청",
+            "RF 신호 모니터링으로 활성 기동 탐지",
+            "근접 접근 이벤트에 대한 CDM(Conjunction Data Message) 확인",
+            "2회 TLE 업데이트 이후에도 이상 지속 시 SDA 운용자 통보"
         ]
     elif score >= 35:
         risk_level = "Medium"
         strategy = [
-            "SGP4 propagation comparison recommended — compare predicted vs updated TLE.",
-            "Monitor mean motion trend over next 3 TLE epochs.",
-            "Check for maneuver announcements from satellite operator.",
-            "Verify BSTAR drag coefficient for atmospheric drag assessment.",
-            "Flag for escalation if anomaly trend persists beyond 24 hours.",
+            "SGP4 전파 비교 권장 — 예측 대 업데이트 TLE 비교.",
+            "다음 3회 TLE 에포크에 걸쳐 평균 운동 추세 모니터링.",
+            "위성 운용자의 기동 공지 확인.",
+            "대기권 항력 평가를 위한 BSTAR 항력 계수 검증.",
+            "24시간 이내 이상 추세 지속 시 에스컬레이션 플래그 설정.",
         ]
         validation_plan = [
-            "Download latest TLE from Space-Track.org and compare mean motion delta",
-            "Propagate with SGP4 and compare predicted vs updated orbit",
-            "Monitor BSTAR drag term for atmospheric drag assessment",
-            "Flag for escalation if anomaly trend continues over next 24 hours"
+            "Space-Track.org에서 최신 TLE 다운로드 후 평균 운동 델타 비교",
+            "SGP4 전파 후 예측 대 업데이트 궤도 비교",
+            "대기권 항력 평가를 위한 BSTAR 항력 계수 모니터링",
+            "다음 24시간 이내 이상 추세 지속 시 에스컬레이션 플래그 설정"
         ]
     else:
         risk_level = "Low"
         strategy = [
-            "Routine TLE monitoring — verify next update within standard cycle.",
-            "Maintain standard tracking cadence — no immediate action required.",
-            "Confirm ground track repeatability for Earth observation missions." if mission == "Earth Observation" else "No cross-validation required at this time.",
+            "정기 TLE 모니터링 — 표준 주기 내 다음 업데이트 확인.",
+            "표준 추적 주기 유지 — 즉각적인 조치 불필요.",
+            "지구 관측 임무 연속성을 위한 지상 트랙 반복성 확인." if mission == "Earth Observation" else "현재 교차 검증 불필요.",
         ]
         validation_plan = [
-            "Verify next TLE update within standard 24-48 hour cycle",
-            "Confirm ground track repeatability for mission continuity",
-            "No cross-validation required at this time"
+            "표준 24~48시간 주기 내 다음 TLE 업데이트 확인",
+            "임무 연속성을 위한 지상 트랙 반복성 확인",
+            "현재 교차 검증 불필요"
         ]
 
-    anomaly_status = "Anomaly candidate detected" if score >= 35 else "No anomaly detected"
-    reason_text = " ".join(reasons) if reasons else "Parameters within nominal range for mission profile."
+    anomaly_status = "이상 후보 감지됨" if score >= 35 else "이상 없음"
+    reason_text = " ".join(reasons) if reasons else "임무 프로파일 기준 정상 범위 내 파라미터."
 
     return {
         "risk_score": score,
@@ -146,7 +146,7 @@ def calculate_risk(alt, ecc, mmc, orbit, mission, inc):
         "anomaly_status": anomaly_status,
         "anomaly_reason": reason_text,
         "recommended_strategy": strategy,
-        "follow_up_action": "Use optical observation or RF monitoring for cross-validation." if score >= 35 else "Continue routine monitoring.",
+        "follow_up_action": "교차 검증을 위해 광학 관측 또는 RF 모니터링 활용 권장." if score >= 35 else "정기 모니터링 계속.",
         "validation_plan": validation_plan
     }
 
